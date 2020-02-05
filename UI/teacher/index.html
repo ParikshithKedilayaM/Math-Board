@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Math Board</title>
+		<script>
+			if((sessionStorage.getItem("name") === null 
+				|| sessionStorage.getItem("name") === "")
+				|| sessionStorage.getItem("role") !== "teacher") {
+					document.location.href="/UI/";
+			}
+			function setGrade(selectedGrade) {
+				sessionStorage.setItem("grade", selectedGrade.value);
+			}
+		</script>
+        <script src = ""></script>
+		<link rel="stylesheet" href ="../../styles.css">
+    </head>
+    <body>
+		<div class = "header">
+			
+		</div>
+        <div class="Teacher">
+            <h1>Select grade for quiz</h1>
+			<form action="quiz.html">
+				<input type="radio" class="radiobtn" value="1" name="grade" onselect=setGrade(this)>Grade 1<br>
+				<input type="radio" class="radiobtn" value="4" name="grade" onselect=setGrade(this)>Grade 4<br>
+				<input type="radio" class="radiobtn" value="9" name="grade" onselect=setGrade(this)>Grade 9<br>
+				<input type="submit" class="submitbtn" value="Create Quiz">
+			</form>
+        </div>
+    </body>
+</html>

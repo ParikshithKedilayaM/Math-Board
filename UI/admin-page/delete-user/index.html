@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<link rel="stylesheet" href ="../../styles.css">
+<script>
+	if((sessionStorage.getItem("name") === null 
+				|| sessionStorage.getItem("name") === "")
+				|| sessionStorage.getItem("role") !== "admin") {
+					document.location.href="/UI/";
+			}
+</script>
+<script>
+function deleteconfirm() {
+	var user = document.getElementById("name").value;
+	var userid = document.getElementById("userIDText").value;
+	if(user.length===0){
+
+	} else {
+		confirm("Are You Sure!");
+		deleteUserAPI(userid);
+	}
+}
+
+function deleteUserAPI(userid){
+	var url = "http://127.0.0.1:8080/DeleteUser/" + userid;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             alert(this.responseText);
+         }
+    };
+	xhttp.open("GET", url, false);
+	xhttp.send();
+
+
+}
+function searchUser() {
+	var userid = document.getElementById("userIDText").value;
+	if (userid === '' || userid === null) {
+		return false;
+	} else {
+		searchAPICall(userid);
+	}
+}
+
+
+function searchAPICall(userid) {
+	var url = "http://127.0.0.1:8080/getUserforDelete/" + userid;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+		 var response = JSON.parse(this.responseText);
+             document.getElementById('name').value = response.name;
+			 document.getElementById('userType').value = response.role;
+         }
+    };
+	xhttp.open("GET", url, false);
+	xhttp.send();
+}
+function cancelreg() {
+	window.location.href="../";
+}
+</script>
+<body>
+
+<form>
+  <div class="Userform Delete">
+    <h1>Delete User</h1>
+    <p>Please Enter UserID to delete an account.</p>
+    <hr>
+<table class="DeleteUserTable">
+<tr><td><label for="userID"><b>User ID</b></label></td>
+    <td><input type="text" placeholder="Enter UserId" id="userIDText" name="userIDText" required></td>
+    <td>
+    <button type="button" class="searchbtn" onclick="searchUser()">Search</button>
+    </td>
+   </tr> 
+
+  <tr><td> <label for="name"><b>Name</b></label></td>
+    <td><input type="text" id="name" name="name"  readonly></td></tr>
+
+   <tr> <td><label for="userType"><b>User Type</b></label></td>
+   <td> <input type="text" id="userType" name="userType" readonly></td></tr>
+    
+     <tr> <td>   <button type="submit" onclick="deleteconfirm()">Delete</button></td>
+      <td> <button type="button" onclick="cancelreg()">Cancel</button></td></tr>
+    </table>
+  </div>
+</form>
+
+</body>
+</html>

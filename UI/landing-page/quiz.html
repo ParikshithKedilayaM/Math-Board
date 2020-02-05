@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>
+            Quiz time
+        </title>
+        <script src="../indexjs.js"></script>
+        <script src="quiz.js"></script>
+        <link rel="stylesheet" href="sandbox.css">
+	    <link rel="stylesheet" href="w3css.css">
+	    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+    <body>
+        <div class="w3-container">
+            <h1>Math Board</h1>
+            <h4>Reshuffle the blocks to get the answer: <div style = "display: inline" id="answer"></div></h4>
+            <div class="w3-display-topright w3-padding" id = "loginContainer">
+                <button class="logButton" onclick="logout()">Logout</button>
+            </div>
+        </div>
+        
+        <div id="question" class = "numberContainer">
+            <div class="blockContainer" id="blockContainer">
+
+            </div>
+        </div>
+        <div id="sdCon" class="sandboxContainer"  ondrop="drop(event)"  ondragover="allowDrop(event)" ondragstart="drag(event)">
+            <div class="operatorContainer sbExpression " id="sandboxExpression"   >
+            </div>
+        </div>
+        <script>
+            $("#sandboxExpression").sortable();
+          </script>
+          
+      
+      
+      
+      
+          <div class="resultContainer" id="resultContainer">
+              <button onclick="calculateResult()" class="resultElement"> Calculate </button><br><br>
+              <textarea id="finalResult" readonly class="textArea"> </textarea><br><br><hr>
+              <div class="" id="">
+                <button class="resultElement" id="submit" onclick="evaluateQuiz()">Submit</button>
+            </div>
+      
+          </div>
+    </body>
+</html>

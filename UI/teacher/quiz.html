@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Math Board</title>
+		<!-- <script>
+			if((sessionStorage.getItem("name") === null 
+				|| sessionStorage.getItem("name") === "")
+				|| sessionStorage.getItem("role") !== "teacher") {
+					document.location.href="/UI/";
+			}
+		</script> -->
+         <link rel="stylesheet" href ="../styles.css">
+        <script src = "teacher.js"></script>
+    </head>
+    <body>
+	<div class="Userform Register">
+	<h1>Create Quiz<h1>
+	<hr>
+			<table class="UserTable">
+				<tr>
+					<td>Question 1</td>
+					<td><input type = "text" id = "question1" placeholder="Type your question here"/></td>
+				</tr>
+				<tr>
+					<td>Question 2</td>
+					<td><input type = "text" id = "question2" placeholder="Type your question here"/></td>
+					</tr>
+				<tr>
+					<td>Question 3</td>
+					<td><input type = "text" id = "question3" placeholder="Type your question here"/></td>
+					</tr>
+				<tr>
+					<td>Question 4</td>
+					<td><input type = "text" id = "question4" placeholder="Type your question here"/></td>
+					</tr>
+				<tr>
+					<td>Question 5</td>
+					<td><input type = "text" id = "question5" placeholder="Type your question here"/></td>
+					</tr>
+				<tr>
+					<td>Question 6</td>
+					<td><input type = "text" id = "question6" placeholder="Type your question here"/></td>
+					</tr>
+				<tr>
+					<td>Question 7</td>
+					<td><input type = "text" id = "question7" placeholder="Type your question here"/></td>
+					</tr>
+				<tr>
+					<td>Question 8</td>
+					<td><input type = "text" id = "question8" placeholder="Type your question here"/></td>
+					</tr>
+				<tr>
+					<td>Question 9</td>
+					<td><input type = "text" id = "question9" placeholder="Type your question here"/></td>
+					</tr>
+				<tr>
+					<td>Question 10</td>
+					<td><input type = "text" id = "question10" placeholder="Type your question here"/></td>
+					</tr>
+					<tr>
+					</tr>
+					<tr>
+					</tr>
+					<tr>
+					</tr>
+				<tr>
+					<td colspan="2" ><button type="submit" class="publish" id="publishbtn" onclick="saveQuestions()">Publish</button>&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="cancel" class="cancelbtn" id="cancelbtn" onclick="cancelQuiz()">Cancel</button></td>
+				</tr>
+			</table>
+			</div>
+    </body>
+</html>

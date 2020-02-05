@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>Create User</title>
+		<script>
+			if((sessionStorage.getItem("name") === null 
+				|| sessionStorage.getItem("name") === "")
+				|| sessionStorage.getItem("role") !== "admin") {
+					document.location.href="/UI/";
+			}
+		</script>
+        <link rel="stylesheet" href ="../../styles.css">
+        <script src = "createuser.js"></script>
+    </head>
+    <body>
+
+        <div class="Userform Register">
+            <h1>Register User</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+            <table class= "UserTable">
+            <tr><td><label for="UserID"><b>UserID: </b></label></td>
+                <td><input type="text" placeholder="Enter UserID" id="userid" required></td></tr> 
+
+            <tr><td><label for="Name"><b>Name: </b></label></td>
+                <td><input type="text" placeholder="Enter Name" id="name" required> </td></tr>
+
+            <tr><td><label for="Role"><b>Select Role: </b></label></td>
+            <td><select id="selectRole" class="drop-down" onchange="checkForStudent(this)" required>
+                <option value="">--Select--</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="admin">Admin</option>
+            </select></td>
+
+            <td><label for="Grade" id="labelGrade" hidden><b>Select Grade: </b></label></td>
+                <td><select id="selectGrade" class="drop-down" onchange="setGrade(this)" hidden>
+                    <option value="">--Select--</option>
+                    <option value="primary">1-4</option>
+                    <option value="middle">5-8</option>
+                    <option value="high">9-12</option>
+                </select></td></tr>
+
+            <tr><td><label for="email"><b>Email: </b></label></td>
+                <td><input type="text" placeholder="Enter Email" id="email"> </td></tr>
+        
+            <tr><td><label for="psw"><b>Password: </b></label></td>
+                <td><input type="password" placeholder="Enter Password" id="psw" required></td></tr>
+        
+            <tr><td><label for="psw-repeat"><b>Repeat Password: </b></label></td>
+                <td><input type="password" placeholder="Repeat Password" id="psw-repeat" required></td></tr>
+
+            <tr>
+			<td><button type="submit" class="registerbtn" id="registerbtn" onclick="register()">Register</button></td>
+                <td><button type="cancel" class="cancelbtn" id="cancelbtn" onclick="cancelreg()">Cancel</button></td></tr>
+			</table>
+        </div>
+	</form>
+    </body>
+</html>

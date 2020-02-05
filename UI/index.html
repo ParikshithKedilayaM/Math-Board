@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title> Math-Board </title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="indexjs.js"></script>
+    </head>
+    <body>
+        <div class = "Userform login">
+            <h1 class="loginHeader">Login</h1>
+			<p>Please Enter Username and Password</p>
+			<hr>
+            <form onsubmit="login(); return false;" method="post">
+            <table class ="LoginTable">
+            <tr><td><label><b>Username: </b></label></td><td><input type = "text" class = "username" id = "username" placeholder="Enter your Username"></input></td></tr>
+            <tr><td><label><b>Password: </b></label></td><td><input type ="password" class = "password" id = "password" placeholder="Enter your Password"></input></td></tr>
+            <tr><td colspan="2"><input type="submit" class = "btn" id = "loginbtn" onclick="login()" value="Login"></input></td></tr>
+            </table>
+            </form>
+        </div>
+    </body>
+</html>

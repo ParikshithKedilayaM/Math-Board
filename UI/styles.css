@@ -1,0 +1,38 @@
+.login{
+	width: 290px;;    
+}
+.Userform{
+	background-color: rgb(222, 233, 233);
+	border: 1;
+	height: auto;
+	margin: auto;
+	text-align: center;
+}
+.LoginTable{
+	margin: 0 auto;
+}
+.Register{
+	width: 350px;
+}
+.btn
+{
+	
+}
+.UserTable{
+	text-align: left;
+	margin: 0 auto;
+	padding-bottom: 10px;
+}
+.DeleteUserTable{
+	text-align: left;
+	margin: 0 auto;
+	padding-bottom: 10px;
+}
+.Delete{
+	width: 350px;
+}
+td {
+	padding-bottom: 5px;
+}
+
+	

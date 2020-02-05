@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>math-board unit testing</title>
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script type="text/javascript" src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sinon@3/pkg/sinon.js"></script>
+  <script type="text/javascript" src="createuser.js"></script>
+  <script>
+    QUnit.module("UI Validation Unit Test");
+    QUnit.test( "Validate email address", function( assert ) {
+      assert.equal(validateEmail("abc"), false);
+	  assert.equal(validateEmail("abc#"), false);
+	  assert.equal(validateEmail("abc123"), false);
+	  assert.equal(validateEmail("abc@ac.com"), true);
+	  assert.equal(validateEmail("abc@ac.co"), true);
+	  assert.equal(validateEmail("abc@ac.c"), false);
+	  assert.equal(validateEmail("abc@com"), false);
+	  assert.equal(validateEmail("abc.com"), false);
+	  assert.equal(validateEmail(".google@com"), false);
+	  assert.equal(validateEmail("abc@gmail.elso"), false);
+    });
+	QUnit.test("Check Passwords", function(assert) {
+		var stub = sinon.stub(window, "alert").callsFake(function(msg) { return false; } );
+		assert.equal(checkPassword("password", "repassword"), false);
+		assert.equal(stub.callCount, 1);
+		assert.equal(stub.getCall(0).args[0], "Passwords do not match");
+		stub.restore();
+		assert.equal(checkPassword("password", "password"), true);
+	});
+	QUnit.module("REST API Unit Test");
+	QUnit.test( "Register student API call", function(assert) {
+		var stub = sinon.stub(window, "alert").callsFake(function(msg) { return false; } );
+		var params = {
+			'userid' : 'test',
+			'name' : 'name',
+			'role' : 'student',
+			'grade' : 'high',
+			'email' : 'abc@gmail.com',
+			'password' : 'pwd*'
+		};
+		assert.ok(true, regUserAPICall(params));
+		assert.equal(stub.callCount, 1);
+		assert.equal(stub.getCall(0).args[0], "User Added Successfully");
+		stub.restore();
+	});
+	QUnit.test( "Register admin API call", function(assert) {
+		var stub = sinon.stub(window, "alert").callsFake(function(msg) { return false; } );
+		var params = {
+			'userid' : 'admin',
+			'name' : 'admin',
+			'role' : 'admin',
+			'grade' : '',
+			'email' : 'admin@gmail.com',
+			'password' : 'pwd*'
+		};
+		assert.ok(true, regUserAPICall(params));
+		assert.equal(stub.callCount, 1);
+		assert.equal(stub.getCall(0).args[0], "User Added Successfully");
+		stub.restore();
+	});
+  </script>
+</body>
+</html>
