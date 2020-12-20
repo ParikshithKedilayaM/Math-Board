@@ -1,0 +1,236 @@
+<html>
+
+<head>
+    <script src="sandbox.js"></script>
+    <script src="../indexjs.js"></script>
+    <link rel="stylesheet" href="sandbox.css">
+	<link rel="stylesheet" href="w3css.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+	<div class="w3-container">
+		<h1>Math Board</h1>
+		<div class="w3-display-topright w3-padding" id = "loginContainer">
+
+			<div class="dropdown" id="teacher" style="display: none;">
+				<button onclick="myFunction()" class="dropbtn">Create Quiz</button>
+				<div id="myDropdown" class="dropdown-content">
+					<div onclick="gradeSelected('Grade 1')">Grade 1</div>
+					<div onclick="gradeSelected('Grade 4')">Grade 4</div>
+				</div>
+			</div>
+
+            
+            <button class="logButton" onclick="takeQuiz()" id="takeQuiz" style="display:none;">Take Quiz</button>
+
+		</div>
+	</div>
+    <div class="numberContainer">
+		<button class="toggleText" onclick="toggle('blockContainer')">
+			<p class="blockTitle">Numbers</p>
+		</button>
+        <div class="blockContainer" id="blockContainer">
+            <div class="number" id="0" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">0</span>
+        
+            </div>
+            <div class="number" id="1" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">1</span>
+
+            </div>
+            <div class="number" id="2" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">2</span>
+
+            </div>
+            <div class="number" id="3" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">3</span>
+
+            </div>
+            <div class="number" id="4" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">4</span>
+
+            </div>
+            <div class="number" id="5" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">5</span>
+
+            </div>
+            <div class="number" id="6" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">6</span>
+
+            </div>
+            <div class="number" id="7" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">7</span>
+
+            </div>
+            <div class="number" id="8" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">8</span>
+
+            </div>
+            <div class="number" id="9" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">9</span>
+
+            </div>
+		</div>
+		<button class="toggleText" onclick="toggle('opContainer')">
+			<p class="blockTitle">Operators</p>
+		</button>
+        <div class="blockContainer" id="opContainer">
+            <div class="operator" id="plus" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">+</span>
+
+            </div>
+            <div class="operator" id="minus" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">-</span>
+
+            </div>
+            <div class="operator" id="asterisk" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">x</span>
+
+            </div>
+            <div class="operator" id="backslash" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">/</span>
+
+            </div>
+        </div>
+		<div id ="middleLevel">
+		<button class="toggleText" onclick="toggle('paraContainer')">
+			<p class="blockTitle">Operations</p>
+		</button>
+        <div class="operatorContainer" id="paraContainer">
+            <div class="operatorExpression" id="addition" draggable="true" ondragstart="drag(event)">
+				<span ><input type="text"  class="sumExpression" id="leftNum"></input></span>  
+				<span class="numberText">+</span>
+				<span id="rightNum"><input type="text" class="sumExpression"></input></span>
+			</div>
+			<div class="operatorExpression" id="subtraction" draggable="true" ondragstart="drag(event)">
+				<span ><input type="text"  class="sumExpression" id="leftNum"></input></span>  
+				<span class="numberText">-</span>
+				<span id="rightNum"><input type="text" class="sumExpression"></input></span>
+			</div>
+			<div class="operatorExpression" id="multiplication" draggable="true" ondragstart="drag(event)">
+				<span ><input type="text"  class="sumExpression" id="leftNum"></input></span>  
+				<span class="numberText">*</span>
+				<span id="rightNum"><input type="text" class="sumExpression"></input></span>
+			</div>
+			<div class="operatorExpression" id="division" draggable="true" ondragstart="drag(event)">
+				<span ><input type="text"  class="sumExpression" id="leftNum"></input></span>  
+				<span class="numberText">/</span>
+				<span id="rightNum"><input type="text" class="sumExpression"></input></span>
+			</div>
+        
+			<div class="number paranthesis" id="curlybrace1" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">(</span>
+
+            </div>
+            <div class="number paranthesis" id="curlybrace2" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">)</span>
+
+            </div>
+		</div>	
+		</div>
+		<div id ="highLevel">
+		<!--<button class="toggleText" onclick="toggle('variablesContainer')">
+			<p class="blockTitle">Variables</p>
+		</button>
+		 <div class="operatorContainer" id="variablesContainer">
+			<div class="variable" id="A" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">a</span>
+
+            </div>
+            <div class="variable" id="B" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">b</span>
+
+            </div>
+            <div class="variable" id="C" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">c</span>
+
+            </div>
+            <div class="variable" id="D" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">x</span>
+
+            </div>
+            <div class="variable" id="E" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">y</span>
+
+            </div>
+            <div class="variable" id="F" draggable="true" ondragstart="drag(event)">
+                <span class="numberText">z</span>
+
+            </div>
+		</div> -->
+        </div>
+
+
+    </div>
+    <div id="sdCon" class="sandboxContainer"  ondrop="drop(event)"  ondragover="allowDrop(event)" ondragstart="drag(event)">
+        <div class="operatorContainer sbExpression " id="sandboxExpression"   >
+        </div>
+    </div>
+	<script>
+      $("#sandboxExpression").sortable({
+        over: function(e, ui) { sortableIn = 1; },
+       out: function(e, ui) { sortableIn = 0; },
+       beforeStop: function (event, ui) {
+           newItem = ui.item;
+           if (sortableIn == 0) {
+             ui.item.remove();
+          }
+       }
+      });
+    </script>
+	
+
+
+
+
+    <div class="resultContainer" id="resultContainer">
+        <!-- <div class="logoutContainer">
+            <button name = "logout" value="logout" id="logout" onclick="logout()" class="resultElement" >Logout</button>
+        </div> -->
+		<button onclick="calculateResult()" class="resultElement"> Solve </button><br><br>
+		<textarea id="finalResult" readonly class="textArea"> </textarea><br><br><hr>
+		
+		<div class = "deleteArea" ondrop="deleteSelected(event)" ondragover="allowDrop(event)">
+			<i class="fa fa-trash"></i><br>
+			Drop here to delete
+		</div><br><br>
+		<button onclick="clearForm()" class="resultElement"> Clear All </button><br><br>
+		<button class = "resultElement" onclick="deleteLast()"> Undo </button><br><br><hr>
+        
+
+    </div>
+
+<div class="w3-container">
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <div class = "Userform login">
+            <h1 class="loginHeader">Login</h1>
+			<p>Please Enter Username and Password</p>
+			<hr>
+            <form onsubmit="login(); return false;" method="post">
+            <table class ="LoginTable">
+            <tr><td><label><b>Username: </b></label></td><td><input type = "text" class = "username" id = "username" placeholder="Enter your Username"></input></td></tr>
+            <tr><td><label><b>Password: </b></label></td><td><input type ="password" class = "password" id = "password" placeholder="Enter your Password"></input></td></tr>
+            <tr><td colspan="2"><input type="submit" class = "btn" id = "loginbtn" onclick="login()" value="Login"></input></td></tr>
+            </table>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+
+
+
+
+</html>
